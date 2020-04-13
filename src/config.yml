@@ -1,0 +1,11 @@
+# This is the configuration file for the PACBirthday plugin.
+
+# Messages
+birthday_announcement: "§c§lPeace§6§lAnd§a§lCube §ete souhaite un joyeux anniversaire %1s !"
+
+birthday_saved: "Ta date d'anniversaire a été enregistrée."
+birthday_invalid: "La date d'anniversaire est invalide."
+
+player_birthday: "L'anniversaire de %1s est le %2s %3s."
+player_not_found: "Le joueur n'a pas été trouvé."
+player_not_set: "Le joueur n'a pas de date d'anniversaire définie."
