@@ -30,8 +30,6 @@ public class BirthdaysCommand implements CommandExecutor, TabExecutor {
 					playerNames += ChatColor.YELLOW + player + " ";
 				}
 				
-				sender.sendMessage(playerNames);
-				
 				sender.sendMessage(String.format(ChatColor.LIGHT_PURPLE + this.birthdaysToday, players.size(), playerNames));
 			} else {
 				sender.sendMessage(ChatColor.RED + this.noBirthdayToday);
