@@ -2,6 +2,10 @@ package fr.peaceandcube.pacbirthday.data;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
@@ -38,6 +42,20 @@ public class BirthdayData {
 			return birthday;
 		}
 		return null;
+	}
+	
+	public static List<String> getBirthdays(String birthday) {
+		Set<String> uuids = config.getKeys(false);
+		if (!uuids.isEmpty()) {
+			List<String> players = new ArrayList<>();
+			for (String uuid : uuids) {
+				if (config.get(uuid).equals(birthday)) {
+					players.add(Bukkit.getOfflinePlayer(UUID.fromString(uuid)).getName());
+				}
+			}
+			return players;
+		}
+		return new ArrayList<>();
 	}
 	
 	public static void trySaveToDisk() {

@@ -17,6 +17,11 @@ commands:
     permission: pacbirthday.see
     permission-message: §cYou do not have the permission to use this command.
     usage: "§eUsage: §r/birthday <player>"
+  birthdays:
+    description: Allows you to see the players having their birthday today
+    permission: pacbirthday.today
+    permission-message: §cYou do not have the permission to use this command.
+    usage: "§eUsage: §r/birthdays"
 
 permissions:
   pacbirthday.set:
@@ -24,4 +29,7 @@ permissions:
     default: true
   pacbirthday.see:
     description: Allows you to see a player's birthday
+    default: true
+  pacbirthday.today:
+    description: Allows you to see the players having their birthday today
     default: true
