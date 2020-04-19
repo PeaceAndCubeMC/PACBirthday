@@ -18,6 +18,7 @@ import fr.peaceandcube.pacbirthday.util.Month;
 public class SetBirthdayCommand implements CommandExecutor, TabExecutor {
 	public FileConfiguration config = Bukkit.getPluginManager().getPlugin("PACBirthday").getConfig();
 	public String birthdaySaved = config.getString("birthday_saved");
+	public String birthdayAlreadySaved = config.getString("birthday_already_saved");
 	public String birthdayInvalid = config.getString("birthday_invalid");
 	
 	@Override
@@ -26,13 +27,18 @@ public class SetBirthdayCommand implements CommandExecutor, TabExecutor {
 			Player player = (Player) sender;
 			
 			if (args.length == 2 && player.hasPermission("pacbirthday.set")) {
-				if (this.isValidBirthday(args[0], args[1])) {
-					String monthNumber = String.format("%02d", Month.fromString(args[1]).getNumber());
-					BirthdayData.saveBirthday(player, String.format("%02d", Integer.parseInt(args[0])) + "-" + monthNumber);
-					player.sendMessage(ChatColor.YELLOW + this.birthdaySaved);
+				if (BirthdayData.getBirthday(player) == null) {
+					if (this.isValidBirthday(args[0], args[1])) {
+						String monthNumber = String.format("%02d", Month.fromString(args[1]).getNumber());
+						BirthdayData.saveBirthday(player, String.format("%02d", Integer.parseInt(args[0])) + "-" + monthNumber);
+						player.sendMessage(ChatColor.YELLOW + this.birthdaySaved);
+					} else {
+						player.sendMessage(ChatColor.RED + this.birthdayInvalid);
+					}
 				} else {
-					player.sendMessage(ChatColor.RED + this.birthdayInvalid);
+					player.sendMessage(ChatColor.RED + this.birthdayAlreadySaved);
 				}
+				
 				return true;
 			}
 		}

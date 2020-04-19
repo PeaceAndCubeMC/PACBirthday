@@ -4,6 +4,7 @@
 birthday_announcement: "§c§lPeace§6§lAnd§a§lCube §ete souhaite un joyeux anniversaire %1s !"
 
 birthday_saved: "Ta date d'anniversaire a été enregistrée."
+birthday_already_saved: "Tu as déjà enregistré ta date d'anniversaire."
 birthday_invalid: "La date d'anniversaire est invalide."
 
 player_birthday: "L'anniversaire de %1s est le %2s %3s."
@@ -12,3 +13,8 @@ player_not_set: "Le joueur n'a pas de date d'anniversaire définie."
 
 birthdays_today: "Il y a %1s anniversaire(s) aujourd'hui : %2s"
 no_birthday_today: "Il n'y a aucun anniversaire aujourd'hui."
+
+# Rewards
+# Use %1$s to use the player's name in a command
+rewards:
+  - minecraft:give %1$s minecraft:player_head{SkullOwner:%1$s,display:{Name:'{"text":"Tête de %1$s","color":"yellow","italic":false}',Lore:['{"text":"Cadeau d\'anniversaire"}']},Enchantments:[{id:"minecraft:protection",lvl:4}],AttributeModifiers:[{AttributeName:"generic.armor",Name:"generic.armor",Amount:2,Operation:0,UUIDLeast:155648,UUIDMost:419097,Slot:"head"}]}
