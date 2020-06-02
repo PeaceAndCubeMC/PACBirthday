@@ -14,12 +14,13 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import fr.peaceandcube.pacbirthday.data.BirthdayData;
-import fr.peaceandcube.pacbirthday.util.Month;
+import fr.peaceandcube.pacpi.date.LocalizedMonth;
+import fr.peaceandcube.pacpi.player.PlayerErrors;
+import fr.peaceandcube.pacpi.player.PlayerSuggestionProviders;
 
 public class BirthdayCommand implements CommandExecutor, TabExecutor {
 	public FileConfiguration config = Bukkit.getPluginManager().getPlugin("PACBirthday").getConfig();
 	public String playerBirthday = config.getString("player_birthday");
-	public String playerNotFound = config.getString("player_not_found");
 	public String playerNotSet = config.getString("player_not_set");
 	
 	@SuppressWarnings("deprecation")
@@ -38,7 +39,7 @@ public class BirthdayCommand implements CommandExecutor, TabExecutor {
 					return true;
 				}
 			}
-			sender.sendMessage(ChatColor.RED + this.playerNotFound);
+			sender.sendMessage(PlayerErrors.PLAYER_NOT_FOUND);
 			return true;
 		}
 		return false;
@@ -48,7 +49,7 @@ public class BirthdayCommand implements CommandExecutor, TabExecutor {
 		String birthday = BirthdayData.getBirthday(player);
 		if (birthday != null) {
 			String day = birthday.substring(0, 2);
-			String month = Month.fromNumber(Integer.parseInt(birthday.substring(3, 5))).getLocalizedName();
+			String month = LocalizedMonth.fromNumber(Integer.parseInt(birthday.substring(3, 5))).getLocalizedName();
 			sender.sendMessage(String.format(ChatColor.LIGHT_PURPLE + this.playerBirthday, player.getName(), day, month));
 		} else {
 			sender.sendMessage(ChatColor.RED + this.playerNotSet);
@@ -58,13 +59,7 @@ public class BirthdayCommand implements CommandExecutor, TabExecutor {
 	@Override
 	public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
 		if (args.length == 1 && sender.hasPermission("pacbirthday.see")) {
-			List<String> players = new ArrayList<>();
-			for (Player player : Bukkit.getOnlinePlayers()) {
-				if (player.getName().toLowerCase().startsWith(args[0].toLowerCase())) {
-					players.add(player.getName());
-				}
-			}
-			return players;
+			return PlayerSuggestionProviders.getOnlinePlayers(args[0]);
 		}
 		return new ArrayList<>();
 	}

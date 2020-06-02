@@ -12,7 +12,7 @@ import org.bukkit.command.TabExecutor;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import fr.peaceandcube.pacbirthday.data.BirthdayData;
-import fr.peaceandcube.pacbirthday.util.Utils;
+import fr.peaceandcube.pacpi.date.DateUtils;
 
 public class BirthdaysCommand implements CommandExecutor, TabExecutor {
 	public FileConfiguration config = Bukkit.getPluginManager().getPlugin("PACBirthday").getConfig();
@@ -22,7 +22,7 @@ public class BirthdaysCommand implements CommandExecutor, TabExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (args.length == 0 && sender.hasPermission("pacbirthday.today")) {
-			List<String> players = BirthdayData.getBirthdays(Utils.getCurrentDay());
+			List<String> players = BirthdayData.getBirthdays(DateUtils.getCurrentMonthDay());
 			if (!players.isEmpty()) {
 				String playerNames = "";
 				for (String player : players) {

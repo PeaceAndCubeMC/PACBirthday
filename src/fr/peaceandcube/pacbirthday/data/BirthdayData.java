@@ -2,6 +2,7 @@ package fr.peaceandcube.pacbirthday.data;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -24,7 +25,11 @@ public class BirthdayData {
 		
 		if (!file.exists()) {
 			plugin.getDataFolder().mkdirs();
-			plugin.saveResource("birthdays.yml", true);
+			try {
+				Files.createFile(file.toPath());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		config = YamlConfiguration.loadConfiguration(file);

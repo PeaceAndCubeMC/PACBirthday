@@ -15,7 +15,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 import fr.peaceandcube.pacbirthday.data.BirthdayData;
-import fr.peaceandcube.pacbirthday.util.Utils;
+import fr.peaceandcube.pacpi.date.DateUtils;
 
 public class PlayerJoin implements Listener {
 	public FileConfiguration config = Bukkit.getPluginManager().getPlugin("PACBirthday").getConfig();
@@ -27,7 +27,7 @@ public class PlayerJoin implements Listener {
 		Player player = event.getPlayer();
 		Server server = player.getServer();
 		
-		String currentDay = Utils.getCurrentDay();
+		String currentDay = DateUtils.getCurrentMonthDay();
 		String birthday = BirthdayData.getBirthday(player);
 		
 		if (currentDay.equals(birthday)) {

@@ -13,7 +13,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import fr.peaceandcube.pacbirthday.data.BirthdayData;
-import fr.peaceandcube.pacbirthday.util.Month;
+import fr.peaceandcube.pacpi.date.LocalizedMonth;
 
 public class SetBirthdayCommand implements CommandExecutor, TabExecutor {
 	public FileConfiguration config = Bukkit.getPluginManager().getPlugin("PACBirthday").getConfig();
@@ -29,7 +29,7 @@ public class SetBirthdayCommand implements CommandExecutor, TabExecutor {
 			if (args.length == 2 && player.hasPermission("pacbirthday.set")) {
 				if (BirthdayData.getBirthday(player) == null) {
 					if (this.isValidBirthday(args[0], args[1])) {
-						String monthNumber = String.format("%02d", Month.fromString(args[1]).getNumber());
+						String monthNumber = String.format("%02d", LocalizedMonth.fromString(args[1]).getNumber());
 						BirthdayData.saveBirthday(player, String.format("%02d", Integer.parseInt(args[0])) + "-" + monthNumber);
 						player.sendMessage(ChatColor.YELLOW + this.birthdaySaved);
 					} else {
@@ -46,7 +46,7 @@ public class SetBirthdayCommand implements CommandExecutor, TabExecutor {
 	}
 	
 	private boolean isValidBirthday(String day, String month) {
-		Month validMonth = Month.fromString(month);
+		LocalizedMonth validMonth = LocalizedMonth.fromString(month);
 		
 		if (validMonth != null) {
 			if (Integer.parseInt(day) > 0 && Integer.parseInt(day) <= validMonth.getMaxDays()) {
@@ -70,7 +70,7 @@ public class SetBirthdayCommand implements CommandExecutor, TabExecutor {
 		
 		if (args.length == 2 && sender.hasPermission("pacbirthday.set")) {
 			List<String> localizedMonths = new ArrayList<>();
-			for (Month month : Month.values()) {
+			for (LocalizedMonth month : LocalizedMonth.values()) {
 				if (month.getLocalizedName().startsWith(args[1].toLowerCase())) {
 					localizedMonths.add(month.getLocalizedName());
 				}
