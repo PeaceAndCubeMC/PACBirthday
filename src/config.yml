@@ -3,6 +3,8 @@
 # Messages
 birthday_announcement: "§c§lPeace§6§lAnd§a§lCube §ete souhaite un joyeux anniversaire %1s !"
 
+birthday_not_set: "Pense à enregistrer ton anniversaire avec %s"
+
 birthday_saved: "Ta date d'anniversaire a été enregistrée."
 birthday_already_saved: "Tu as déjà enregistré ta date d'anniversaire."
 birthday_invalid: "La date d'anniversaire est invalide."
