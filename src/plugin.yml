@@ -1,8 +1,8 @@
 main: fr.peaceandcube.pacbirthday.PACBirthday
 name: PACBirthday
 description: A plugin allowing players to set and see their birthday
-version: 1.3.0
-author: Yanis48
+version: 1.4.0
+author: YanisBft
 website: https://github.com/PeaceAndCubeMC/PACBirthday
 api-version: 1.13
 

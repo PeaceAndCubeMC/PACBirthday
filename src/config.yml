@@ -18,4 +18,4 @@ no_birthday_today: "Il n'y a aucun anniversaire aujourd'hui."
 # Rewards
 # Use %1$s to use the player's name in a command
 rewards:
-  - minecraft:give %1$s minecraft:player_head{SkullOwner:%1$s,display:{Name:'{"text":"Tête de %1$s","color":"yellow","italic":false}',Lore:['{"text":"Cadeau d\'anniversaire"}']},Enchantments:[{id:"minecraft:protection",lvl:4}],AttributeModifiers:[{AttributeName:"generic.armor",Name:"generic.armor",Amount:2,Operation:0,UUIDLeast:155648,UUIDMost:419097,Slot:"head"}]}
+  - minecraft:give %1$s minecraft:player_head{SkullOwner:%1$s,display:{Name:'{"text":"Tête de %1$s","color":"yellow","italic":false}',Lore:['{"text":"Cadeau d\'anniversaire"}']},Enchantments:[{id:"minecraft:protection",lvl:4}],AttributeModifiers:[{AttributeName:"generic.armor",Name:"generic.armor",Amount:2,Operation:0,UUID:[I;-1368648448,1102530648,-1340720272,618628168],Slot:"head"}]}

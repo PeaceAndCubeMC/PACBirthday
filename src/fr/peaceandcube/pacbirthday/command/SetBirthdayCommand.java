@@ -1,8 +1,7 @@
 package fr.peaceandcube.pacbirthday.command;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import fr.peaceandcube.pacbirthday.data.BirthdayData;
+import fr.peaceandcube.pacpi.date.LocalizedMonth;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -12,8 +11,8 @@ import org.bukkit.command.TabExecutor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-import fr.peaceandcube.pacbirthday.data.BirthdayData;
-import fr.peaceandcube.pacpi.date.LocalizedMonth;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SetBirthdayCommand implements CommandExecutor, TabExecutor {
 	public FileConfiguration config = Bukkit.getPluginManager().getPlugin("PACBirthday").getConfig();
@@ -27,10 +26,10 @@ public class SetBirthdayCommand implements CommandExecutor, TabExecutor {
 			Player player = (Player) sender;
 			
 			if (args.length == 2 && player.hasPermission("pacbirthday.set")) {
-				if (BirthdayData.getBirthday(player) == null) {
+				if (BirthdayData.getBirthday(player.getUniqueId().toString()) == null) {
 					if (this.isValidBirthday(args[0], args[1])) {
 						String monthNumber = String.format("%02d", LocalizedMonth.fromString(args[1]).getNumber());
-						BirthdayData.saveBirthday(player, String.format("%02d", Integer.parseInt(args[0])) + "-" + monthNumber);
+						BirthdayData.setBirthday(player.getUniqueId().toString(), String.format("%02d", Integer.parseInt(args[0])) + "-" + monthNumber);
 						player.sendMessage(ChatColor.YELLOW + this.birthdaySaved);
 					} else {
 						player.sendMessage(ChatColor.RED + this.birthdayInvalid);

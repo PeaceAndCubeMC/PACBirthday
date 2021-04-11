@@ -1,8 +1,9 @@
 package fr.peaceandcube.pacbirthday.command;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import fr.peaceandcube.pacbirthday.data.BirthdayData;
+import fr.peaceandcube.pacpi.date.LocalizedMonth;
+import fr.peaceandcube.pacpi.player.PlayerErrors;
+import fr.peaceandcube.pacpi.player.PlayerSuggestionProviders;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
@@ -13,16 +14,14 @@ import org.bukkit.command.TabExecutor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-import fr.peaceandcube.pacbirthday.data.BirthdayData;
-import fr.peaceandcube.pacpi.date.LocalizedMonth;
-import fr.peaceandcube.pacpi.player.PlayerErrors;
-import fr.peaceandcube.pacpi.player.PlayerSuggestionProviders;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BirthdayCommand implements CommandExecutor, TabExecutor {
 	public FileConfiguration config = Bukkit.getPluginManager().getPlugin("PACBirthday").getConfig();
 	public String playerBirthday = config.getString("player_birthday");
 	public String playerNotSet = config.getString("player_not_set");
-	
+
 	@SuppressWarnings("deprecation")
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -46,7 +45,7 @@ public class BirthdayCommand implements CommandExecutor, TabExecutor {
 	}
 	
 	private void sendBirthday(CommandSender sender, OfflinePlayer player) {
-		String birthday = BirthdayData.getBirthday(player);
+		String birthday = BirthdayData.getBirthday(player.getUniqueId().toString());
 		if (birthday != null) {
 			String day = birthday.substring(0, 2);
 			String month = LocalizedMonth.fromNumber(Integer.parseInt(birthday.substring(3, 5))).getLocalizedName();
