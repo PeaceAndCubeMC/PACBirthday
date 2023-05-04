@@ -1,18 +1,18 @@
 # This is the configuration file for the PACBirthday plugin.
 
 # Messages
-birthday_announcement: "§c§lPeace§6§lAnd§a§lCube §ete souhaite un joyeux anniversaire %1s !"
+birthday_announcement: "§c§lPeace§6§lAnd§a§lCube §ete souhaite un joyeux anniversaire %s !"
 
-birthday_not_set: "Pense à enregistrer ton anniversaire avec %s"
+birthday_not_set: "Pense à enregistrer ton anniversaire avec "
 
 birthday_saved: "Ta date d'anniversaire a été enregistrée."
 birthday_already_saved: "Tu as déjà enregistré ta date d'anniversaire."
 birthday_invalid: "La date d'anniversaire est invalide."
 
-player_birthday: "L'anniversaire de %1s est le %2s %3s."
+player_birthday: "L'anniversaire de %s est le %s %s."
 player_not_set: "Le joueur n'a pas de date d'anniversaire définie."
 
-birthdays_today: "Il y a %1s anniversaire(s) aujourd'hui : %2s"
+birthdays_today: "Il y a %s anniversaire(s) aujourd'hui : "
 no_birthday_today: "Il n'y a aucun anniversaire aujourd'hui."
 
 # Rewards

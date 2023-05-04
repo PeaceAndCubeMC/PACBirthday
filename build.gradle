@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.0.0'
+}
+
+sourceCompatibility = JavaVersion.VERSION_18
+targetCompatibility = JavaVersion.VERSION_18
+
+group = project.pacbirthday_group
+archivesBaseName = project.pacbirthday_name
+version = project.pacbirthday_version
+
+repositories {
+    // Paper
+    maven { url "https://papermc.io/repo/repository/maven-public/" }
+}
+
+configurations {
+    include
+    include.canBeResolved = true
+    compileOnly.extendsFrom(include)
+}
+
+dependencies {
+    compileOnly "io.papermc.paper:paper-api:${paper_version}"
+}
+
+build {
+    dependsOn(shadowJar)
+}
+
+shadowJar {
+    configurations = [project.configurations.include]
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.encoding = "UTF-8"
+    it.options.release = 18
+}
+
+processResources {
+    filesMatching('plugin.yml') {
+        expand(
+                version: version
+        )
+    }
+}

@@ -1,0 +1,45 @@
+main: fr.peaceandcube.pacbirthday.PACBirthday
+name: PACBirthday
+description: A plugin allowing players to set and see their birthday
+version: ${version}
+author: YanisBft
+website: https://github.com/PeaceAndCubeMC/PACBirthday
+api-version: 1.19
+
+commands:
+  birthday:
+    description: Allows you to see a player's birthday
+    aliases: bd
+    permission: peaceandcube.birthday
+    permission-message: §cYou do not have the permission to use this command.
+    usage: "§eUsage: §r/birthday <player>"
+  birthdays:
+    description: Allows you to see the players having their birthday today
+    permission: peaceandcube.birthdays
+    permission-message: §cYou do not have the permission to use this command.
+    usage: "§eUsage: §r/birthdays"
+  pacbirthday:
+    description: Reloads the plugin
+    permission: peaceandcube.pacbirthday
+    permission-message: §cYou do not have the permission to use this command.
+    usage: "§eUsage: §r/pacbirthday reload"
+  setbirthday:
+    description: Allows you to set your own birthday
+    aliases: setbd
+    permission: peaceandcube.setbirthday
+    permission-message: §cYou do not have the permission to use this command.
+    usage: "§eUsage: §r/setbirthday <day> <month>"
+
+permissions:
+  peaceandcube.birthday:
+    description: Allows you to see a player's birthday
+    default: true
+  peaceandcube.birthdays:
+    description: Allows you to see the players having their birthday today
+    default: true
+  peaceandcube.pacbirthday:
+    description: Allows you to use /pacbirthday command
+    default: op
+  peaceandcube.setbirthday:
+    description: Allows you to set your own birthday
+    default: true
