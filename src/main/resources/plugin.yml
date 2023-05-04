@@ -29,6 +29,12 @@ commands:
     permission: peaceandcube.setbirthday
     permission-message: §cYou do not have the permission to use this command.
     usage: "§eUsage: §r/setbirthday <day> <month>"
+  updatebirthday:
+    description: Allows you to update a player's birthday
+    aliases: updatebd
+    permission: peaceandcube.updatebirthday
+    permission-message: §cYou do not have the permission to use this command.
+    usage: "§eUsage: §r/updatebirthday <player> <day> <month>"
 
 permissions:
   peaceandcube.birthday:
@@ -43,3 +49,6 @@ permissions:
   peaceandcube.setbirthday:
     description: Allows you to set your own birthday
     default: true
+  peaceandcube.updatebirthday:
+    description: Allows you to use /updatebirthday command
+    default: op

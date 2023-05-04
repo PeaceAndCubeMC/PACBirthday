@@ -8,6 +8,7 @@ public class Config {
     public static String birthdayAnnouncement = PACBirthday.config.getString("birthday_announcement");
     public static String birthdayNotSet = PACBirthday.config.getString("birthday_not_set");
     public static String birthdaySaved = PACBirthday.config.getString("birthday_saved");
+    public static String birthdayUpdated = PACBirthday.config.getString("birthday_updated");
     public static String birthdayAlreadySaved = PACBirthday.config.getString("birthday_already_saved");
     public static String birthdayInvalid = PACBirthday.config.getString("birthday_invalid");
     public static String playerBirthday = PACBirthday.config.getString("player_birthday");
@@ -20,6 +21,7 @@ public class Config {
         birthdayAnnouncement = PACBirthday.config.getString("birthday_announcement");
         birthdayNotSet = PACBirthday.config.getString("birthday_not_set");
         birthdaySaved = PACBirthday.config.getString("birthday_saved");
+        birthdayUpdated = PACBirthday.config.getString("birthday_updated");
         birthdayAlreadySaved = PACBirthday.config.getString("birthday_already_saved");
         birthdayInvalid = PACBirthday.config.getString("birthday_invalid");
         playerBirthday = PACBirthday.config.getString("player_birthday");

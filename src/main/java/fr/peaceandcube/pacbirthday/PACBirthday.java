@@ -1,9 +1,6 @@
 package fr.peaceandcube.pacbirthday;
 
-import fr.peaceandcube.pacbirthday.command.BirthdayCommand;
-import fr.peaceandcube.pacbirthday.command.BirthdaysCommand;
-import fr.peaceandcube.pacbirthday.command.PacBirthdayCommand;
-import fr.peaceandcube.pacbirthday.command.SetBirthdayCommand;
+import fr.peaceandcube.pacbirthday.command.*;
 import fr.peaceandcube.pacbirthday.event.PlayerJoin;
 import fr.peaceandcube.pacbirthday.file.BirthdaysFile;
 import fr.peaceandcube.pacbirthday.file.Config;
@@ -22,6 +19,7 @@ public class PACBirthday extends JavaPlugin {
 		this.getCommand("birthdays").setExecutor(new BirthdaysCommand());
 		this.getCommand("pacbirthday").setExecutor(new PacBirthdayCommand());
 		this.getCommand("setbirthday").setExecutor(new SetBirthdayCommand());
+		this.getCommand("updatebirthday").setExecutor(new UpdateBirthdayCommand());
 
 		saveDefaultConfig();
 		reloadConfig();

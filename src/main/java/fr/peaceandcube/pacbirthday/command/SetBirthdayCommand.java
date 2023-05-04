@@ -4,6 +4,7 @@ import fr.peaceandcube.pacbirthday.PACBirthday;
 import fr.peaceandcube.pacbirthday.file.Config;
 import fr.peaceandcube.pacbirthday.util.LocalizedMonth;
 import fr.peaceandcube.pacbirthday.util.PlayerMessages;
+import fr.peaceandcube.pacbirthday.util.Utils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -25,7 +26,7 @@ public class SetBirthdayCommand implements CommandExecutor, TabExecutor {
 			if (sender instanceof Player player) {
 				if (args.length == 2) {
 					if (PACBirthday.birthdaysFile.getBirthday(player.getUniqueId().toString()) == null) {
-						if (this.isValidBirthday(args[0], args[1])) {
+						if (Utils.isValidBirthday(args[0], args[1])) {
 							String monthNumber = String.format("%02d", LocalizedMonth.fromString(args[1]).getNumber());
 							PACBirthday.birthdaysFile.setBirthday(player.getUniqueId().toString(), String.format("%02d", Integer.parseInt(args[0])) + "-" + monthNumber);
 							player.sendMessage(PlayerMessages.success(Config.birthdaySaved));
@@ -38,15 +39,6 @@ public class SetBirthdayCommand implements CommandExecutor, TabExecutor {
 					return true;
 				}
 			}
-		}
-		return false;
-	}
-
-	private boolean isValidBirthday(String day, String month) {
-		LocalizedMonth validMonth = LocalizedMonth.fromString(month);
-
-		if (validMonth != null) {
-			return Integer.parseInt(day) > 0 && Integer.parseInt(day) <= validMonth.getMaxDays();
 		}
 		return false;
 	}

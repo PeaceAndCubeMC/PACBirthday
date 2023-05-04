@@ -6,6 +6,7 @@ birthday_announcement: "§c§lPeace§6§lAnd§a§lCube §ete souhaite un joyeux 
 birthday_not_set: "Pense à enregistrer ton anniversaire avec "
 
 birthday_saved: "Ta date d'anniversaire a été enregistrée."
+birthday_updated: "La date d'anniversaire de %s a été mise à jour."
 birthday_already_saved: "Tu as déjà enregistré ta date d'anniversaire."
 birthday_invalid: "La date d'anniversaire est invalide."
 
