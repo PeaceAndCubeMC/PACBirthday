@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'maven-publish'
     id 'com.github.johnrengelman.shadow' version '7.0.0'
 }
 
@@ -16,7 +17,6 @@ repositories {
 }
 
 configurations {
-    include
     include.canBeResolved = true
     compileOnly.extendsFrom(include)
 }
@@ -31,6 +31,8 @@ build {
 
 shadowJar {
     configurations = [project.configurations.include]
+
+    archiveFileName = "${archivesBaseName}-${version}.jar"
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -43,5 +45,23 @@ processResources {
         expand(
                 version: version
         )
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/PeaceAndCubeMC/PACBirthday"
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
     }
 }
