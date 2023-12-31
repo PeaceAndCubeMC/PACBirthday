@@ -4,8 +4,8 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '7.0.0'
 }
 
-sourceCompatibility = JavaVersion.VERSION_18
-targetCompatibility = JavaVersion.VERSION_18
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 
 group = project.pacbirthday_group
 archivesBaseName = project.pacbirthday_name
@@ -37,7 +37,7 @@ shadowJar {
 
 tasks.withType(JavaCompile).configureEach {
     it.options.encoding = "UTF-8"
-    it.options.release = 18
+    it.options.release = 17
 }
 
 processResources {
